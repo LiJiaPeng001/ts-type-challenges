@@ -1,0 +1,25 @@
+{
+  "name": "ts-type-challenges",
+  "version": "1.0.0",
+  "description": "TS类型体操",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiJiaPeng001/ts-type-challenges.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiJiaPeng001/ts-type-challenges/issues"
+  },
+  "homepage": "https://github.com/LiJiaPeng001/ts-type-challenges#readme",
+  "devDependencies": {
+    "@types/node": "^18.6.5",
+    "typescript": "^4.7.4",
+    "vite": "^3.0.5"
+  }
+}
