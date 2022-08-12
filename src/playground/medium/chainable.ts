@@ -7,23 +7,23 @@
 
 declare const config: Chainable
 
+/**
+ * @key PropertyKey
+ *    
+ * type PropertyKey = string | number | symbol;
+ */
+
 type Chainable<T = {}> = {
-  option: <X extends PropertyKey, Y>(
-    key: X,
-    value: X extends keyof T ? (Y extends T[X] ? never : Y) : Y
-  ) => Chainable<{
-    [key in X | keyof T]: key extends X
-    ? Y
-    : key extends keyof T
-    ? T[key]
-    : never;
-  }>;
-  get(): T;
-};
+  option: <X extends PropertyKey, Y>(key: X, value: X extends keyof T ? T[X] : Y) => Chainable<{
+    [key in X | keyof T]: key extends X ? Y : key extends keyof T ? T[key] : never
+  }>
+  get: () => T
+}
+
 const result = config
   .option('foo', 123)
   .option('name', 'type-challenges')
-  .option('bar', { value: 'Hello World' })
+  .option('bar', { value: 'Hello World', name: { age: 2 } })
   .get()
 
 
