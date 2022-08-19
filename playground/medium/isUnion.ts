@@ -6,7 +6,7 @@ type case1 = IsUnion<string>  // false
 type case2 = IsUnion<string | number>  // true
 type case3 = IsUnion<[string | number]>  // false
 
-type IsUnion<T, F = T> = T extends F ? [F] extends [T] ? false : true : false
+type IsUnion<T, F = T> = F extends F ? [T] extends [F] ? false : true : false
 
 /**
  * 1. T
