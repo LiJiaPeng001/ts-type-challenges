@@ -3,7 +3,7 @@
  */
 
 type Foo = {
-  [key: string]: any;
+  [x: string]: any
   foo(): void;
 }
 
@@ -11,11 +11,11 @@ type Foo = {
  * @key as 
  */
 
-type A = RemoveIndexSignature<Foo>  // expected { foo(): void }
+type Sign = RemoveIndexSignature<Foo>  // expected { foo(): void }
 
-type RemoveIndexSignature<T, P = PropertyKey> = {
-  [K in keyof T as  P extends K ? never : K extends P ? K : never]: T[K]
+// your answers
+type RemoveIndexSignature<T> = {
+  [K in keyof T as K extends `${infer G}` ? G : never]: T[K]
 }
-
 
 export default RemoveIndexSignature
