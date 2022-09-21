@@ -9,12 +9,12 @@
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "esModuleInterop": true,
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "types": [],
-    "typeRoots": ["./node_modules/@types/", "./types"],
+    "typeRoots": ["./playground/*/*.ts"],
     "paths": {
       "~/*": ["src/*"]
     }
