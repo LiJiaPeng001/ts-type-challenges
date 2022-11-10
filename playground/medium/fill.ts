@@ -7,6 +7,13 @@
  * 2.
  */
 
-type Exp = Fill<[1, 2, 3], 0> // expected to be [0, 0, 0]
+type Exp = Fill<[1, 2, 3, 4, 5], 3, 1, 3> // expected to be [0, 0, 0]
 
-type Fill<T extends any[], F extends number = 0, S extends number = 0, E extends number = T['length'], Count extends any[] = [], Flag extends boolean = Count['length'] extends S ? true : false> = T extends [infer A, ...infer B] ? [F, ...Fill<B, F>] : []
+type Fill<T extends any[], F extends number = 0, S extends number = 0, E extends number = T['length'], Count extends any[] = [], IsStart extends boolean = S extends Count['length'] ? true : false> =
+  E extends Count['length'] ?
+  T :
+  T extends [infer A, ...infer B] ?
+  IsStart extends true ?
+  [F, ...Fill<B, F, S, E, [...Count, F], IsStart>] :
+  [A, ...Fill<B, F, S, E, [...Count, A]>] :
+  T
