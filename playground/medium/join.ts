@@ -7,8 +7,7 @@ type j2 = Join<["Hello", "World"], " ">; // expected to be 'Hello World'
 type j3 = Join<["2", "2", "2"], 1>; // expected to be '21212'
 type Res3 = Join<["o"], "u">; // expected to be 'o'
 
-type Join<T, V extends string | number, S extends string = ""> =
-  T extends [infer A extends string, ...infer B] ?
-  B extends [] ? `${S}${A}` :
-  Join<B, V, `${S}${A}${V}`> : never
-
+type Join<T, V extends string | number, S extends string = ""> = T extends [...infer A, infer B extends string] ?
+  A extends [] ?
+  `${B}${S}` :
+  Join<A, V, `${V}${B}${S}`> : never
