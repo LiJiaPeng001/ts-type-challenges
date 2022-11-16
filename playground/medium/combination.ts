@@ -9,3 +9,6 @@ type Keys = Combination<['foo', 'bar', 'baz']>
 type Combination<T extends string[], U = T[number], A = U> =
   A extends string ?
   A | `${A} ${Combination<T, Exclude<U, A>>}` : never
+
+
+// A B C  |  A B | AC | 
