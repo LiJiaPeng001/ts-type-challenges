@@ -17,4 +17,5 @@ let r: result = {
   "model Y": "model Y",
 };
 
+let a = typeof tuple
 export default TupleToObject;
